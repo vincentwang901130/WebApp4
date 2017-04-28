@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"		
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>	
+  	
+<style>
+
+	.dataTable {
+		width:100%;
+		border:2px solid #999966;
+		background-color:transparent;
+	}
+	
+	.dataTableGridPane {
+		width:100%;
+		text-align:left;
+		vertical-align:top;
+		background-color:transparent;
+	}
+
+	.buttonPane {
+		width:100%;
+		height:25px;
+		text-align:right;
+		cellpadding:5;
+		cellspacing:1;	   
+	}
+		
+	.search-results-header {
+		text-align:center;
+		background-color:#999966;
+		border-bottom:1px solid #BBBBBB;
+		padding:16px;
+		font-size:14px;
+		font-weight:bold;
+		font-style:"Arial Verdana", Arial, Helvetica, sans-serif;	
+	}
+										  
+	.searchResults {
+		width:100%;
+		vertical-align:center;
+	}
+
+	.resultsHeader {
+		width:100%;
+		height:25px;
+		color:white;
+		vertical-align:top;
+		font-size:24px;
+		font-weight:bold;
+		font-style:"Arial Verdana", Arial, Helvetica, sans-serif;		
+	}	
+	
+	.familyName {
+			width:30%;
+			color:white;
+			font-size:14px;
+			font-weight:bold;
+			font-style:"Arial Verdana", Arial, Helvetica, sans-serif;
+			background-color:black; 
+		}		 	
+		
+	.givenName {
+		width:30%;
+		color:white;
+		font-size:14px;
+		font-weight:bold;
+		font-style:"Arial Verdana", Arial, Helvetica, sans-serif;
+		background-color:black; 
+	}		 	
+		
+	.checkBox {
+		width:5%;
+		color:black;
+		text-align:center;
+		font-size:14px;
+		font-weight:bold;
+		font-style:"Arial Verdana", Arial, Helvetica, sans-serif;
+		background-color:black; 
+	}
+	
+</style>
+
+</head>
+<body>
+<f:view id="courseResultsPaneView">
+<h:form if="courseResultsPaneForm">
+
+<div >
+
+	
+		 
+	<div style="height:200px;width:100%;overflow-x:auto;overflow-y:auto;"  >		
+	<h:panelGrid columns="1" class="dataTableGridPane" rendered="#{courseController.render}">
+
+		<h:dataTable id="dataTable" 							  
+						 var="c"		
+						 rows="50" 				 
+						 value="#{courseController.listOfObjects}"
+						 headerClass="search-results-header"
+						 columnClasses="familyName, givenName, givenName,familyName, givenName, givenName">
+
+		    <h:column>
+		    	<f:facet name="header">courseCode</f:facet>
+		    	#{c.courseCode}
+		    </h:column>
+			 <h:column>
+			 	<f:facet name="header">courseName</f:facet>
+			 	#{c.courseName}
+			 </h:column>
+			  <h:column>
+			 	<f:facet name="header">meetingTimes</f:facet>
+			 	#{c.meetingTimes}
+			 </h:column>
+			 <h:column>
+		    	<f:facet name="header">time</f:facet>
+		    	#{c.time}
+		    </h:column>
+			 <h:column>
+			 	<f:facet name="header">location</f:facet>
+			 	#{c.location}
+			 </h:column>
+			
+			 
+		</h:dataTable>
+			
+	</h:panelGrid>
+	</div>
+</div>
+
+</h:form>
+</f:view>
+</body>
+</html>
